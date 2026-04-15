@@ -13,6 +13,14 @@ for /f "skip=4 tokens=3" %%i in ('route print 0.0.0.0') do (
 )
 
 :found
+echo.
+echo Detected gateway: %GATEWAY%
+echo If this is wrong, type the correct one. Otherwise press Enter.
+echo.
+set /p CONFIRM="Gateway [%GATEWAY%]: "
+if not "%CONFIRM%"=="" set GATEWAY=%CONFIRM%
+
+echo.
 choice /C YN /N /M "Install routes? [Y/N]: "
 if errorlevel 2 exit /b 0
 
