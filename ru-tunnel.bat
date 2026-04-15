@@ -7,7 +7,7 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-for /f "tokens=3" %%i in ('route print 0.0.0.0 ^| findstr "0.0.0.0"') do (
+for /f "skip=4 tokens=3" %%i in ('route print 0.0.0.0') do (
     set GATEWAY=%%i
     goto :found
 )
